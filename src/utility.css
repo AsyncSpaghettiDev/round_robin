@@ -1,0 +1,424 @@
+/*
+    ==========
+    Typography
+    ==========
+*/
+
+.ff-primary {
+    font-family: var(--ff-primary);
+}
+
+.ff-secondary {
+    font-family: var(--ff-secondary);
+}
+
+/*
+    ==========
+    Text Align
+    ==========
+*/
+
+.ta-center {
+    text-align: center;
+}
+
+.ta-left {
+    text-align: left;
+}
+
+.ta-right {
+    text-align: right;
+}
+
+/*
+    ===========
+    Font Weight
+    ===========
+*/
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+/*
+    ===========
+    Fonts Sizes
+    ===========
+*/
+
+.fs-100 {
+    font-size: var(--fs-100);
+}
+
+.fs-200 {
+    font-size: var(--fs-200);
+}
+
+.fs-300 {
+    font-size: var(--fs-300);
+}
+
+.fs-400 {
+    font-size: var(--fs-400);
+}
+
+.fs-500 {
+    font-size: var(--fs-500);
+}
+
+.fs-600 {
+    font-size: var(--fs-600);
+}
+
+/*
+    ===========
+    Backgrounds
+    ===========
+*/
+
+.bg-200 {
+    background-color: var(--bg-200);
+}
+
+.bg-400 {
+    background-color: var(--bg-400);
+}
+
+.bg-500 {
+    background-color: var(--bg-500);
+}
+
+.bg-600 {
+    background-color: var(--bg-600);
+}
+
+.bg-800 {
+    background-color: var(--bg-800);
+}
+
+/*
+    ===========
+    Text Colors
+    ===========
+*/
+
+.tc-200 {
+    color: var(--tc-200);
+}
+
+.tc-400 {
+    color: var(--tc-400);
+}
+
+.tc-500 {
+    color: var(--tc-500);
+}
+
+.tc-600 {
+    color: var(--tc-600);
+}
+
+.tc-800 {
+    color: var(--tc-800);
+}
+
+/*
+    ===========
+    Flex Layout
+    ===========
+*/
+
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/*
+    ==========
+    Gap Layout
+    ==========
+*/
+.gap-0 {
+    gap: 0;
+}
+
+.gap-1 {
+    gap: 0.25em;
+}
+
+.gap-2 {
+    gap: 0.5em;
+}
+
+.gap-3 {
+    gap: 0.75em;
+}
+
+.gap-4 {
+    gap: 1em;
+}
+
+.gap-row-0 {
+    row-gap: 0;
+}
+
+.gap-row-1 {
+    row-gap: 0.25em;
+}
+
+.gap-row-2 {
+    row-gap: 0.5em;
+}
+
+.gap-row-3 {
+    row-gap: 0.75em;
+}
+
+.gap-row-4 {
+    row-gap: 1em;
+}
+
+.gap-column-0 {
+    column-gap: 0;
+}
+
+.gap-column-1 {
+    column-gap: 0.25em;
+}
+
+.gap-column-2 {
+    column-gap: 0.5em;
+}
+
+.gap-column-3 {
+    column-gap: 0.75em;
+}
+
+.gap-column-4 {
+    column-gap: 1em;
+}
+
+/*
+    ==============
+    Margin Classes
+    ==============
+*/
+
+.mx-auto {
+    margin-inline: auto;
+}
+
+.mx-0 {
+    margin-inline: 0;
+}
+
+.mx-1 {
+    margin-inline: 0.25em;
+}
+
+.mx-2 {
+    margin-inline: 0.5em;
+}
+
+.mx-3 {
+    margin-inline: 0.75em;
+}
+
+.mx-4 {
+    margin-inline: 1em;
+}
+
+.mx-5 {
+    margin-inline: 1.25em;
+}
+
+.mx-6 {
+    margin-inline: 1.5em;
+}
+
+.my-auto {
+    margin-block: auto;
+}
+
+.my-0 {
+    margin-block: 0;
+}
+
+.my-1 {
+    margin-block: 0.25em;
+}
+
+.my-2 {
+    margin-block: 0.5em;
+}
+
+.my-3 {
+    margin-block: 0.75em;
+}
+
+.my-4 {
+    margin-block: 1em;
+}
+
+.my-5 {
+    margin-block: 1.25em;
+}
+
+.my-6 {
+    margin-block: 1.5em;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.m-1 {
+    margin: 0.25em;
+}
+
+.m-2 {
+    margin: 0.5em;
+}
+
+.m-3 {
+    margin: 0.75em;
+}
+
+.m-4 {
+    margin: 1em;
+}
+
+.m-5 {
+    margin: 1.25em;
+}
+
+.m-6 {
+    margin: 1.5em;
+}
+
+/*
+    ===============
+    Padding Classes
+    ===============
+*/
+
+.px-auto {
+    padding-inline: auto;
+}
+
+.px-0 {
+    padding-inline: 0;
+}
+
+.px-1 {
+    padding-inline: 0.25em;
+}
+
+.px-2 {
+    padding-inline: 0.5em;
+}
+
+.px-3 {
+    padding-inline: 0.75em;
+}
+
+.px-4 {
+    padding-inline: 1em;
+}
+
+.px-5 {
+    padding-inline: 1.25em;
+}
+
+.px-6 {
+    padding-inline: 1.5em;
+}
+
+.py-auto {
+    padding-block: auto;
+}
+
+.py-0 {
+    padding-block: 0;
+}
+
+.py-1 {
+    padding-block: 0.25em;
+}
+
+.py-2 {
+    padding-block: 0.5em;
+}
+
+.py-3 {
+    padding-block: 0.75em;
+}
+
+.py-4 {
+    padding-block: 1em;
+}
+
+.py-5 {
+    padding-block: 1.25em;
+}
+
+.py-6 {
+    padding-block: 1.5em;
+}
+
+.p-auto {
+    padding: auto;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.p-1 {
+    padding: 0.25em;
+}
+
+.p-2 {
+    padding: 0.5em;
+}
+
+.p-3 {
+    padding: 0.75em;
+}
+
+.p-4 {
+    padding: 1em;
+}
+
+.p-5 {
+    padding: 1.25em;
+}
+
+.p-6 {
+    padding: 1.5em;
+}

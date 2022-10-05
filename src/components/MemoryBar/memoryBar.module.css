@@ -1,0 +1,15 @@
+.container {
+    margin-block-start: 0.5em;
+}
+
+.memory {
+    border-radius: 0.5em;
+    overflow: hidden;
+    height: 1.25em;
+    width: 90%;
+}
+
+.used {
+    display: inline-block;
+    height: 100%;
+}
