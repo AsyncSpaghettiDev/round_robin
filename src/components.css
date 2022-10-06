@@ -1,0 +1,44 @@
+.btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 1em;
+    padding-block: 0.5em;
+    padding-inline: 1em;
+}
+
+.btn-primary {
+    background-color: var(--bg-400);
+    color: var(--tc-800);
+    transition: background-color 250ms ease-out;
+}
+
+.btn-primary:hover {
+    background-color: var(--bg-450);
+}
+
+.input_control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.25em;
+    padding-inline: 0.5em;
+    margin-block: 0.5em;
+}
+
+/* .input_label {} */
+
+.input {
+    border: none;
+    border-radius: 1em;
+    padding-block: 0.5em;
+    padding-inline: 1em;
+    background-color: var(--bg-200);
+    color: var(--tc-800);
+    text-align: center;
+    border-bottom: 1px solid var(--bg-800);
+    transition: background-color 250ms ease-out;
+}
+
+.input:hover {
+    background-color: var(--bg-450);
+}
