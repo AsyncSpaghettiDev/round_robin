@@ -8,7 +8,11 @@ const INITIAL_STATE = {
     processMemory: 1,
 }
 
-export const CreateProcess = () => {
+interface Props {
+    onNewProcess: (process: Process) => void
+}
+
+export const CreateProcess = ({ onNewProcess }: Props) => {
     const [process, setProcess] = useState<Process>(INITIAL_STATE)
     const [showForm, setShowForm] = useState<Boolean>(false)
 
@@ -21,7 +25,7 @@ export const CreateProcess = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(process)
+        onNewProcess(process)
         setProcess(INITIAL_STATE)
     }
 

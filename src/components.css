@@ -4,12 +4,12 @@
     border-radius: 1em;
     padding-block: 0.5em;
     padding-inline: 1em;
+    transition: background-color 250ms ease-out;
 }
 
 .btn-primary {
     background-color: var(--bg-400);
     color: var(--tc-800);
-    transition: background-color 250ms ease-out;
 }
 
 .btn-primary:hover {

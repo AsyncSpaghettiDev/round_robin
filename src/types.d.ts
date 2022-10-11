@@ -1,4 +1,4 @@
-interface MemoryProps {
+interface Memory {
     used: number;
     total: number;
 }
