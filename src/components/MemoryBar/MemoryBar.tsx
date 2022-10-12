@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import classNames from './memoryBar.module.css'
 
 interface MemoryBarProps {

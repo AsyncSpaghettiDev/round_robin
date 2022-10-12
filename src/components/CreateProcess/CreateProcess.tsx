@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import classNames from './createProcess.module.css'
 
 const INITIAL_STATE = {
@@ -16,14 +16,17 @@ export const CreateProcess = ({ onNewProcess }: Props) => {
     const [process, setProcess] = useState<Process>(INITIAL_STATE)
     const [showForm, setShowForm] = useState<Boolean>(false)
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const target = e.target
+        console.dir(target)
         setProcess({
             ...process,
-            [e.target.name]: e.target.value
+            [target.name]: target.type === 'number' ? target.valueAsNumber : target.value
         })
+    }
 
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         onNewProcess(process)
         setProcess(INITIAL_STATE)

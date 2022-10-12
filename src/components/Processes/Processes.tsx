@@ -26,7 +26,7 @@ export const Processes = ({ title, processes }: ProcessesProps) => {
                         <th>Memory to use</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='ta-center'>
                     {processList.map((process, index) => (
                         <tr key={index}>
                             <td className='py-2'>{process.quantum.toString().padStart(2, '0')}</td>
