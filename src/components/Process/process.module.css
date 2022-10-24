@@ -1,3 +1,9 @@
 .robin {
     border-block: 1px solid var(--bg-800);
 }
+
+
+.border_bottom {
+    border-bottom: 1px solid var(--bg-800);
+    margin-bottom: 0.5em;
+}

@@ -1,18 +1,20 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import classNames from './createProcess.module.css'
 
-const INITIAL_STATE = {
+const INITIAL_STATE = (nextId: number) => ({
+    id: nextId ?? 1,
     name: '',
     time: 1,
     memory: 1,
-}
+})
 
 interface Props {
+    nextId: number
     onNewProcess: (process: Process) => void
 }
 
-export const CreateProcess = ({ onNewProcess }: Props) => {
-    const [process, setProcess] = useState<Process>(INITIAL_STATE)
+export const CreateProcess = ({ nextId, onNewProcess }: Props) => {
+    const [process, setProcess] = useState<Process>(INITIAL_STATE(nextId))
     const [showForm, setShowForm] = useState<Boolean>(false)
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +31,7 @@ export const CreateProcess = ({ onNewProcess }: Props) => {
         e.preventDefault()
         validateNewProcess(process)
         onNewProcess(process)
-        setProcess(INITIAL_STATE)
+        setProcess(INITIAL_STATE(nextId))
     }
 
     const validateNewProcess = (process: Process): boolean => {

@@ -4,6 +4,7 @@ interface Memory {
 }
 
 interface Process {
+    id: number;
     name: string;
     time: number;
     memory: number;
