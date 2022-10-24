@@ -4,8 +4,7 @@ interface Memory {
 }
 
 interface Process {
-    quantum: number;
-    processName: string;
-    processTime: number;
-    processMemory: number;
+    name: string;
+    time: number;
+    memory: number;
 }

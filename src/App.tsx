@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { CreateProcess } from './components/CreateProcess'
 import { MemoryBar } from './components/MemoryBar'
+import { Process } from './components/Process'
 import { Processes } from './components/Processes'
 
 const App = () => {
@@ -10,13 +11,12 @@ const App = () => {
   const [readyProcesses, setReadyProcesses] = useState<Process[]>([])
 
   const addProcess = (process: Process) => {
-    const used: number = memory.used + process.processMemory
+    const preview: number = process.memory
 
-    if (used > memory.total)
+    if (preview > memory.total)
       return alert('Not enough memory')
 
     setCreatedProcesses([...createdProcesses, process])
-    setMemory({ ...memory, used })
   }
 
   const assignMemory = () => {
@@ -30,6 +30,20 @@ const App = () => {
     })
   }
 
+  const setFinishedProcesses = (process: Process) => {
+    setReadyProcesses([...readyProcesses, process])
+  }
+
+  const updateMemory = (newMemory: number) => {
+    setMemory({
+      ...memory,
+      used: newMemory
+    })
+  }
+
+  const clearCreatedProcesses = () => setCreatedProcesses([])
+
+
   return (
     <main className="App">
       <h1 className='ta-center ff-primary'>Round Robin Simulator</h1>
@@ -38,6 +52,8 @@ const App = () => {
       <CreateProcess onNewProcess={addProcess} />
 
       <Processes title='Added Processes' processes={createdProcesses} />
+
+      <Process processes={createdProcesses} clearProcesses={clearCreatedProcesses} setFinishedProcesses={setFinishedProcesses} updateMemory={updateMemory} />
 
       <Processes title='Ready Processes' processes={readyProcesses} />
 

@@ -2,10 +2,9 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import classNames from './createProcess.module.css'
 
 const INITIAL_STATE = {
-    quantum: 1,
-    processName: '',
-    processTime: 1,
-    processMemory: 1,
+    name: '',
+    time: 1,
+    memory: 1,
 }
 
 interface Props {
@@ -28,8 +27,20 @@ export const CreateProcess = ({ onNewProcess }: Props) => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        validateNewProcess(process)
         onNewProcess(process)
         setProcess(INITIAL_STATE)
+    }
+
+    const validateNewProcess = (process: Process): boolean => {
+        if (process.name === '')
+            throw alert('Process name is required')
+        if (process.time <= 0)
+            throw alert('Process time must be greater than 0')
+        if (process.memory <= 0)
+            throw alert('Process memory must be greater than 0')
+
+        return true
     }
 
     const handleShowForm = () => setShowForm(!showForm)
@@ -40,23 +51,18 @@ export const CreateProcess = ({ onNewProcess }: Props) => {
             {showForm && (
                 <form onSubmit={handleSubmit} className={`${classNames.create_process} flex-row flex-wrap align-center justify-center`}>
                     <div className={`input_control`}>
-                        <label className='input_label' htmlFor="quantum">Quantum</label>
-                        <input className="input" type="number" min={1} name="quantum" id="quantum" value={process.quantum} onChange={handleInputChange} />
+                        <label className='input_label' htmlFor="name">Process Name</label>
+                        <input className="input" type="text" name="name" id="name" value={process.name} onChange={handleInputChange} />
                     </div>
 
                     <div className={`input_control`}>
-                        <label className='input_label' htmlFor="processName">Process Name</label>
-                        <input className="input" type="text" name="processName" id="processName" value={process.processName} onChange={handleInputChange} />
+                        <label className='input_label' htmlFor="time">Process Time (in seconds)</label>
+                        <input className="input" min={0} type="number" name="time" id="time" value={process.time} onChange={handleInputChange} />
                     </div>
 
                     <div className={`input_control`}>
-                        <label className='input_label' htmlFor="processTime">Process Time (in seconds)</label>
-                        <input className="input" min={0} type="number" name="processTime" id="processTime" value={process.processTime} onChange={handleInputChange} />
-                    </div>
-
-                    <div className={`input_control`}>
-                        <label className='input_label' htmlFor="processMemory">Memory</label>
-                        <input className="input" type="number" name="processMemory" id="processMemory" value={process.processMemory} onChange={handleInputChange} />
+                        <label className='input_label' htmlFor="memory">Memory to use</label>
+                        <input className="input" type="number" name="memory" id="memory" value={process.memory} onChange={handleInputChange} />
                     </div>
 
                     <div className={`${classNames.submit_control} ta-center`}>
