@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { RoundRobinContext } from "../../store/context"
 
 import classNames from "./process.module.css"
 
-interface Props {
-    processes: Process[]
-    setFinishedProcesses: (process: Process) => void
-    updateMemory: (memory: number) => void
-    clearProcesses: () => void
-}
 
+export const Process = () => {
+    const {
+        memory,
+        updateMemory,
+        addFinishedProcess,
+        createdProcesses: processes,
+        clearMemory,
+        removeProcess,
+    } = useContext(RoundRobinContext)
 
-export const Process = ({ processes, setFinishedProcesses, updateMemory, clearProcesses }: Props) => {
     const [processList, setProcessList] = useState<Process[]>([])
     const [time, setTime] = useState<number>(0)
     const [currentProcess, setCurrentProcess] = useState<Process | null>(null)
@@ -21,10 +24,7 @@ export const Process = ({ processes, setFinishedProcesses, updateMemory, clearPr
     let interval: ReturnType<typeof setTimeout>
 
     useEffect(() => {
-        isRunning &&
-            processList.forEach(process => {
-                updateMemory(process.memory)
-            })
+        loadProcesses()
     }, [isRunning])
 
     useEffect(() => {
@@ -45,11 +45,12 @@ export const Process = ({ processes, setFinishedProcesses, updateMemory, clearPr
             return
         }
         if (currentProcess.time === 0) {
-            setFinishedProcesses(currentProcess)
+            addFinishedProcess(currentProcess)
             const newList = processList.filter(process => process.id !== currentProcess.id)
             setProcessList(newList)
             updateMemory(-currentProcess.memory)
             setCurrentProcess(null)
+            loadProcesses()
             if (newList.length === 0) {
                 setIsRunning(false)
                 clearInterval(interval)
@@ -66,10 +67,51 @@ export const Process = ({ processes, setFinishedProcesses, updateMemory, clearPr
         setQuantum(quantum - 1)
     }, [time])
 
+    const loadProcesses = (): boolean => {
+        if (!isRunning)
+            return false
+
+        const { total } = memory
+        let used = 0
+
+        console.log(used)
+        console.log(total)
+        console.log('-----------------')
+
+        while (total > used) {
+            if (processes.length === 0)
+                break
+
+            if (total < used + processes[0].memory)
+                break
+
+            const process = processes.shift()
+            console.log(process)
+
+            if (process) {
+                setProcessList(prev => [...prev, process])
+                removeProcess(process.id)
+                updateMemory(process.memory)
+                used += process.memory
+            }
+        }
+        console.log(used)
+        console.log(total)
+        console.log('-----------------')
+
+        return used > 0
+    }
+
     const handleQuantumChange = (e: React.ChangeEvent<HTMLInputElement>) => setInitialQuantum(e.target.valueAsNumber)
 
     const handleStart = () => {
-        if (isRunning) return setIsRunning(false)
+        if (isRunning) {
+            setTime(0)
+            setQuantum(initialQuantum)
+            setProcessList([])
+            clearMemory()
+            return setIsRunning(false)
+        }
 
         if (initialQuantum === 0)
             return alert("Quantum must be greater than 0")
@@ -79,10 +121,6 @@ export const Process = ({ processes, setFinishedProcesses, updateMemory, clearPr
 
         if (processList.length !== 0)
             return alert("Processes are already running")
-
-        setProcessList(processes)
-
-        clearProcesses()
 
         setIsRunning(!isRunning)
     }

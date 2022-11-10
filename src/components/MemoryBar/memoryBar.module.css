@@ -1,5 +1,7 @@
 .container {
     margin-block-start: 0.5em;
+    max-width: 950px;
+    margin-inline: auto;
 }
 
 .memory {

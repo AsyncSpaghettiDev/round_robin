@@ -1,4 +1,5 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useContext, useState } from "react"
+import { RoundRobinContext } from "../../store/context"
 import classNames from './createProcess.module.css'
 
 const INITIAL_STATE = (nextId: number) => ({
@@ -8,12 +9,9 @@ const INITIAL_STATE = (nextId: number) => ({
     memory: 1,
 })
 
-interface Props {
-    nextId: number
-    onNewProcess: (process: Process) => void
-}
 
-export const CreateProcess = ({ nextId, onNewProcess }: Props) => {
+export const CreateProcess = () => {
+    const { nextId, createProcess } = useContext(RoundRobinContext)
     const [process, setProcess] = useState<Process>(INITIAL_STATE(nextId))
     const [showForm, setShowForm] = useState<Boolean>(false)
 
@@ -30,7 +28,7 @@ export const CreateProcess = ({ nextId, onNewProcess }: Props) => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         validateNewProcess(process)
-        onNewProcess(process)
+        createProcess(process)
         setProcess(INITIAL_STATE(nextId))
     }
 
